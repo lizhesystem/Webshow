@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            margin: 0 auto;
+            margin-top: 20px;
+            height: 30px;
+            width: 306px;
+            /*overflow: auto;*/
+        }
+        .header a{
+            height: 100%;
+            width: 100px;
+            line-height: 30px;
+            background-color: #cccccc;
+            border: 1px solid #444444;
+            display: inline-block;
+            text-align: center;
+            border-radius: 10px;
+            float: left;
+            cursor: pointer;
+        }
+        .header li{
+            height: 30px;
+            width: 100%;
+            background-color: #cccccc;
+            list-style: none;
+            cursor: pointer;
+            border: 1px solid #444444;
+            border-radius: 10px;
+
+        }
+        .hide{
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="header">
+        <a>
+            <span>菜单1</span>
+            <ul class="hide">
+                <li>one</li>
+                <li>two</li>
+                <li>thr</li>
+            </ul>
+        </a>
+        <a>
+            <span>菜单2</span>
+            <ul class="hide">
+                <li>one</li>
+                <li>two</li>
+                <li>thr</li>
+            </ul>
+        </a>
+        <a>
+            <span>菜单3</span>
+            <ul class="hide">
+                <li>one</li>
+                <li>two</li>
+                <li>thr</li>
+            </ul>
+        </a>
+</div>
+<script src="../../../js/jquery-3.3.1.js"></script>
+<script>  //jquery 版
+    $(function(){
+        var $a = $(".header > a ");
+        $a.mouseover(function(){
+            $(this).children("ul").removeClass("hide");
+
+        });
+
+        $a.mouseout(function(){
+            $(this).children("ul").addClass("hide");
+
+        })
+    })
+
+</script>
+
+
+<script>  //JS版
+    // var hea = document.getElementsByClassName("header")[0];
+    // var a = hea.getElementsByTagName("a");
+    // for(var i=0;i<a.length;i++){
+    //     a[i].onmouseover = function(){
+    //         var ul = this.getElementsByTagName("ul");
+    //         for(var j=0;j<ul.length;j++){
+    //             ul[j].className = ""
+    //         }
+    //     }
+    // }
+    //
+    // for(var i=0;i<a.length;i++){
+    //     a[i].onmouseout = function(){
+    //         var ul = this.getElementsByTagName("ul");
+    //         for(var j=0;j<ul.length;j++){
+    //             ul[j].className = "hide"
+    //         }
+    //     }
+    // }
+</script>
+</body>
+</html>

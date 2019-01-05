@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .hide{
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+        .box {
+            text-align: center;
+            height: 100%;
+        }
+        .box h1{
+            cursor: pointer;
+        }
+        .box .cover{
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(0,0,0,.5);
+            z-index: 1;
+        }
+        .box span{
+            display: block;
+            text-align: right;
+        }
+        .box .login{
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            background: darkgoldenrod;
+            left: 50%;
+            top: 50%;
+            margin-top: -100px;
+            margin-left: -150px;
+            z-index: 2;
+        }
+        .box span{
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+<h1 id="h1">点击我登录</h1>
+<div id="cover" class="cover hide"></div>
+<div id="login" class="login hide">
+    <span>关闭</span>
+    <input type="text">用户名
+    <input type="password">密码
+</div>
+</div>
+<script src=../../../js/common.js></script>
+<script>
+    var evt={
+        //window.event和事件参数对象e的兼容
+        getEvent:function (evt) {
+            return window.event||evt;
+        },
+        //可视区域的横坐标的兼容代码
+        getClientX:function (evt) {
+            return this.getEvent(evt).clientX;
+        },
+        //可视区域的纵坐标的兼容代码
+        getClientY:function (evt) {
+            return this.getEvent(evt).clientY;
+        },
+        //页面向左卷曲出去的横坐标
+        getScrollLeft:function () {
+            return window.pageXOffset||document.body.scrollLeft||document.documentElement.scrollLeft||0;
+        },
+        //页面向上卷曲出去的纵坐标
+        getScrollTop:function () {
+            return window.pageYOffset||document.body.scrollTop||document.documentElement.scrollTop||0;
+        },
+        //相对于页面的横坐标(pageX或者是clientX+scrollLeft)
+        getPageX:function (evt) {
+            return this.getEvent(evt).pageX? this.getEvent(evt).pageX:this.getClientX(evt)+this.getScrollLeft();
+        },
+        //相对于页面的纵坐标(pageY或者是clientY+scrollTop)
+        getPageY:function (evt) {
+            return this.getEvent(evt).pageY?this.getEvent(evt).pageY:this.getClientY(evt)+this.getScrollTop();
+        }
+
+
+
+    };
+
+    var click = my$("h1");  //点我登录标签
+    var cover = my$("cover"); //遮罩层标签
+    var login = my$("login"); //登录标签
+    var span = login.getElementsByTagName("span")[0]; //span标签
+    //点击登录事件
+    click.onclick = function(){
+        this.className = "hide";
+        cover.className = "cover";
+        login.className = "login";
+    }
+    //点击关闭事件
+    span.onclick = function(){
+        cover.className = "cover hide";
+        login.className = "login hide";
+        my$("h1").className = ''
+    }
+    //鼠标放到login上变成移动样式
+    login.onmouseover = function () {
+        this.style.cursor = "move";
+    };
+    login.onmousedown = function(e){
+      var x = e.clientX - this.offsetLeft-150;
+      var y = e.clientY - this.offsetTop-100;
+        document.onmousemove = function (e) {
+            var newx = e.clientX - x;
+            var newy = e.clientY - y;
+            login.style.left = newx +"px";
+            login.style.top = newy +"px";
+        }
+    }
+    document.onmouseup = function () {
+        document.onmousemove = null
+    }
+//阻止冒泡
+    //    //return false;
+    //    //e.preventDefault();
+    //    //上面的两个是阻止默认事件的
+    //    //下面的两个是阻止事件冒泡的
+    //    //window.event.cancelBubble=true;
+    //    e.stopPropagation();
+
+</script>
+</body>
+</html>

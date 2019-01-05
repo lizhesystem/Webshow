@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 660px;
+            margin: 0 auto;
+            margin-top: 20px;
+            border: 1px solid red;
+            overflow: auto;
+        }
+        .box li{
+            list-style:none;
+            float: left;
+            padding: 10px;
+        }
+        .box a{
+            height: 300px;
+            width: 200px;
+            position: relative;
+            display: block;
+        }
+        .box img{
+            width: 200px;
+            height: 300px;
+        }
+        .box .hide{
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>
+            <a href="#"><img src="img/1.jpg" alt="">
+                <div class="hide"></div>
+            </a>
+        </li>
+        <li><a href="#"><img src="img/2.jpg" alt=""><div class="hide"></div></a></li>
+        <li><a href="#"><img src="img/3.jpg" alt=""><div class="hide"></div></a></li>
+        <li><a href="#"><img src="img/4.jpg" alt=""><div class="hide"></div></a></li>
+        <li><a href="#"><img src="img/5.jpg" alt=""><div class="hide"></div></a></li>
+        <li><a href="#"><img src="img/6.jpg" alt=""><div class="hide"></div></a></li>
+    </ul>
+</div>
+<script src="../../../js/jquery-3.3.1.js"></script>
+<script>
+    $(function(){
+        $(".box a").mouseenter(function(){
+            $(this).children("div").fadeOut(300);
+        });
+
+        $(".box a").mouseleave(function(){
+            $(this).children("div").fadeIn(300);
+        })
+    })
+</script>
+</body>
+</html>

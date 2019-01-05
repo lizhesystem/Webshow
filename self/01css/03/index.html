@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .down{
+            border:30px solid transparent;
+            border-top:30px solid gold;
+            display: inline-block;
+        }
+        .down:hover {
+            border:30px solid transparent;
+            display: inline-block;
+            border-bottom:30px solid darkgoldenrod;
+            margin-top: -27px;
+        }
+        h4{
+            margin: 120px;
+        }
+
+        .inp input{
+                margin-top: 200px;
+                margin-left: 100px;
+                border: 1px solid transparent;
+                width: 100px;
+                height: 40px;
+                 /*border-radius: 10px;*/
+                background-color: #0055FF;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+        }
+        .inp{
+            position: relative;
+            margin-top: 30px;
+        }
+        .inp:before{
+            content: "";
+            display: block;
+            position: absolute;
+            border: 20px solid transparent;
+            border-left: 20px solid cadetblue;
+            top: 200px;
+            left: 200px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div style="height: 1px; background-color: #2459a2">
+    <div class="down"></div>
+</div>
+
+<div class="inp">
+<input type="button" value="按钮">
+</div>
+
+<h4>其实也是体现出小三角通过CSS怎么制作</h4>
+</body>
+</html>

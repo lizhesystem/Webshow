@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            margin: 200px auto 0;
+            width: 400px;
+        }
+        #left{
+            width: 100px;
+            height: 150px;
+            float: left;
+        }
+        .button{
+            float: left;
+            width: 40px;
+            display: inline-block;
+            font-size: 20px;
+            text-align: center;
+        }
+        .button input{
+            width: 20px;
+            height: 20px;
+        }
+
+        #right{
+            width: 100px;
+            height: 150px;
+            float: left;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+<div class="box_left">
+    <select name="left" id="left" multiple>
+        <option value="1">郑州</option>
+        <option value="2">上海</option>
+        <option value="3">广州</option>
+        <option value="4">临沂</option>
+        <option value="5">福山</option>
+    </select>
+</div>
+<div class="button" >
+    <input type="button" value=">>">
+    <input type="button" value="<<">
+    <input type="button" value=">">
+    <input type="button" value="<">
+</div>
+<div>
+    <select name="right" id="right" multiple>
+    </select>
+</div>
+</div>
+<script src="../../../js/jquery-3.3.1.js"></script>
+<script>
+    //全选移动到右边
+    $(".button > input:eq(0)").click(function(){
+        $("#left > option").appendTo("#right")
+    });
+    //全选移动到左边
+    $(".button > input:eq(1)").click(function(){
+        $("#left").append($("#right > option"))
+
+    });
+    //单选右移
+    $(".button > input:eq(2)").click(function(){
+        $("#left > option:checked").appendTo("#right")
+    });
+    //单选左移
+    $(".button > input:eq(3)").click(function(){
+        $("#left").append($("#right > option:checked"))
+    })
+
+
+
+</script>
+
+</body>
+</html>

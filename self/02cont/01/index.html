@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 800px;
+            margin: 100px auto 0;
+        }
+        .hide{
+            display: none;
+
+        }
+        .wrap{
+            height: 50px;
+        }
+        .wrap ul{
+            /*width: 999px;*/
+        }
+        .wrap li{
+            list-style: none;
+            width: 150px;
+            height: 50px;
+            float: left;
+            text-align: center;
+            line-height:50px;
+            font-size: 15px;
+            font-weight: bold;
+            border: 1px solid #cccccc;
+            border-radius:20px 20px 0 0;
+            cursor: pointer;
+        }
+        .wrap-1{
+            width: 800px;
+        }
+        .wrap-1 div{
+            text-align: center;
+            padding: 30px;
+            width: 800px;
+            height: 200px;
+            border: 1px solid #cccccc;
+            box-sizing:border-box
+        }
+
+    </style>
+</head>
+<body>
+<div class="main">
+<div class="wrap">
+    <ul>
+        <li>《白夜行》</li>
+        <li>《嫌疑人X的献身》</li>
+        <li>《神探伽利略》</li>
+        <li>《放学后》</li>
+    </ul>
+</div>
+<div class="wrap-1">
+    <div>《白夜行》是日本作家东野圭吾创作的长篇小说，也是其代表作。该小说于1997年1月至1999年1月间连载于期刊，单行本1999年8月在日本发行。故事围绕着一对有着不同寻常情愫的小学生展开。1973年，大阪的一栋废弃建筑内发现了一具男尸，此后19年，嫌疑人之女雪穗与被害者之子桐原亮司走上截然不同的人生道路，一个跻身上流社会，一个却在底层游走，而他们身边的人，却接二连三地离奇死去，警察经过19年的艰苦追踪，终于使真相大白。</div>
+    <div class="hide">《嫌疑人X的献身》是日本推理小说作家东野圭吾创作的长篇推理小说，也是“伽利略系列”的第三本小说。 该作讲述一个数学天才为了帮助一对母女隐藏杀害前夫的罪行，和警方展开了一连串的斗智，制造整个骗局。 [1] 该作同时获得直木奖和本格推理小说大奖，同时摘得“这本小说了不起”、“本格推理小说Top 10”、“周刊文艺推理小说Top 10”三大推理小说排行榜年度总冠军。 [2] </div>
+    <div class="hide">《神探伽利略》是2013年1月1日由化学工业出版社出版的图书，作者东野圭吾。此书是东野圭吾笔下最意气风发名侦探——“汤川学”系列首作。</div>
+    <div class="hide">《放学后》是日本作家东野圭吾早期创作的推理小说，是他的成名作。1985年，《放学后》以绝对优势摘得日本推理小说界最重要的新人奖——江户川乱步奖。同年，日版单行本由讲谈社出版发行。 [1]  1988年由讲谈社出版文库本。 [1]  正是《放学后》的成功，使他决心走上专职写作的道路。</div>
+</div>
+</div>
+
+<script src="../../../js/jquery-3.3.1.js"></script>
+<script>
+
+    $(function(){
+        $(".wrap li").click(function(){
+        var $index = $(this).index();
+        $(this).css("backgroundColor","#949494").siblings().css("backgroundColor","white")
+        $(".wrap-1 > div").eq($index).removeClass("hide").siblings().addClass("hide");
+    })
+
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .all{
+            overflow: auto;
+        }
+        /*图片遮罩开始*/
+        .touch{
+            width:340px;
+            height:350px;
+            overflow: hidden;
+            position: relative;
+            float: left;
+        }
+
+        .touch .item{
+            /*遮罩层*/
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background: rgba(0,0,0,.6);
+            color: white;
+            text-align: center;
+            /*默认隐藏---visibility隐藏但是保留位置,使用display: none;一样*/
+            visibility: hidden;
+        }
+        .touch:hover .item{
+            visibility: visible;
+        }
+        h4{
+            /*float: left;*/
+            /*width: 30px;*/
+            /*height: 50px;*/
+        }
+    /*图片遮罩结束*/
+
+    /*遮罩对话框开始    */
+        .hide{
+            display: none;
+        }
+
+        .main{
+            width: 340px;
+            height: 350px;
+            float: left;
+            margin-left: 30px;
+            position: relative;
+            z-index: 1;
+            background-color: LightBLue;
+        }
+        .main input{
+            margin-left: 20px;
+            margin-top: 30px;
+            border: 1px solid transparent;
+            width: 100px;
+            height: 40px;
+            /*border-radius: 10px;*/
+            background-color: #0055FF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .wrap {
+            position: absolute;
+            background-color: rgba(0,0,0,0.1);
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 2;
+        }
+        .block{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 50%;
+            top: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            background-color: powderblue;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+<!--图片遮罩开始-->
+<div class="touch">
+    <div><img src="zjn.jpg" width="350"></div>
+    <div class="item">
+        <div>看得到我？</div>
+        <div>(#^.^#)</div>
+    </div>
+</div>
+<!--图片遮罩结束-->
+
+<!--遮罩对话框-->
+<div class="main">
+    <div class="button">
+        <input id="inp" type="button" value="点我看效果">
+    </div>
+    <div id="wrap"  class="wrap hide"></div>
+    <div id="block" class="block hide">
+        <p>我是注册的内容,要居中哦~</p>
+    </div>
+</div>
+<!--遮罩对话框结束-->
+<script>
+    document.getElementById("inp").onclick = function(){
+        document.getElementById("wrap").className="wrap";
+        document.getElementById("block").className="block";
+    }
+</script>
+</body>
+</html>

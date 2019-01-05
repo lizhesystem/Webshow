@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+.hide{
+    display:none;
+}
+.box{
+    position: relative;
+    width: 1200px;
+    height: 240px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+/*图片开始*/
+.pic{
+    position: relative;
+    width: 1200px;
+    height: 240px;
+}
+.pic img{
+    position: absolute;
+    display: none;
+}
+.pic img:first-child{
+    display: block;
+}
+/*图片结束*/
+
+/*左边按钮开始*/
+.left{
+    left: 0;
+}
+.right{
+    right:0;
+}
+.box .slide{
+    position: absolute;
+    height: 50px;
+    width: 40px;
+    background-color: transparent;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 40px;
+    top: 50%;
+    margin-top: -25px;
+    z-index: 2;
+    /*pointer-events: none*/
+}
+.box:hover .dot {
+    display: block;
+}
+/*左右按键结束*/
+
+/*图片下方菜单栏开始        */
+.dot{
+    height: 50px;
+    position: absolute;
+    bottom: 2px;
+    /*pointer-events: none*/
+
+}
+.dot ul li{
+    list-style: none;
+    height: 50px;
+    width: 199px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    float: left;
+    font-size: 13px;
+    margin-right: 1px;
+    color: white;
+}
+.dot li:last-child{
+    margin-right: 0;
+    width: 200px;
+}
+.dot li span{
+    margin-top: 10px;
+    cursor: pointer;
+    display: block;
+
+}
+.dot li b{
+    display: block;
+    cursor: pointer;
+}
+.bottom {
+    position: absolute;
+    bottom: 0;
+}
+.bottom ol li{
+    list-style: none;
+    width: 199px;
+    background-color: #949494;
+    height: 2px;
+    float: left;
+}
+.bottom ol i{
+    display: block;
+    height: 2px;
+    background-color: #949494;
+    float: left;
+    width: 1px;
+}
+/*.dot ol li:last-child{*/
+    /*width: 205px;*/
+/*}*/
+.org{
+     background-color: #FF8C00!important;
+
+}
+
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div class="left slide"><img src="images/left.png" alt=""></div>
+    <div class="right slide"><img src="images/right.png" alt=""></div>
+    <div class="pic">
+        <img src="images/1.jpg" width="1200" alt="">
+        <img src="images/2.jpg" width="1200" alt="">
+        <img src="images/3.jpg" width="1200" alt="">
+        <img src="images/4.jpg" width="1200" alt="">
+        <img src="images/5.jpg" width="1200" alt="">
+        <img src="images/6.jpg" width="1200" alt="">
+    </div>
+    <div class="dot hide">
+        <ul >
+            <li class="org">
+            <span>2222</span>
+            <b>纯平设计，更大内存，更轻薄</b>
+            </li>
+            <li>
+            <span>2222</span>
+            <b>纯平设计，更大内存，更轻薄</b>
+            </li>
+            <li>
+            <span>2222</span>
+            <b>纯平设计，更大内存，更轻薄</b>
+            </li>
+            <li>
+            <span>2222</span>
+            <b>纯平设计，更大内存，更轻薄</b>
+            </li>
+            <li>
+            <span>2222</span>
+            <b>纯平设计，更大内存，更轻薄</b>
+            </li>
+            <li>
+            <span>2222</span>
+            <b>纯平设计，更大内存，更轻薄</b>
+            </li>
+        </ul>
+    </div>
+    <div class="bottom">
+        <ol>
+            <li class="org"></li>
+            <i></i>
+            <li></li>
+            <i></i>
+            <li></li>
+            <i></i>
+            <li></li>
+            <i></i>
+            <li></li>
+            <i></i>
+            <li></li>
+            <i></i>
+        </ol>
+    </div>
+</div>
+<script src="../../../js/jquery-3.3.1.js"></script>
+<script>
+    $(function(){
+       var count = 0;
+       var $ls_img =$(".pic img");
+       var $ls_ol = $(".bottom li");
+       var $pic = $(".pic");
+       var $dot_li = $(".dot li");
+       var $slide = $(".box > .slide");
+
+       function action(img,ol,li,count){
+           img.eq(count).fadeIn(500).siblings().fadeOut(500);
+           ol.eq(count).addClass("org").siblings().removeClass("org");
+           li.eq(count).addClass("org").siblings().removeClass("org");
+       }
+       //鼠标点击右箭头切换事件
+       $(".box > .right").click(function () {
+            clearInterval(img_move);
+            count++;
+            if(count === $ls_img.length){
+              count = 0;
+          }
+           action($ls_img,$ls_ol,$dot_li,count)
+       });
+       //鼠标点击左箭头切换事件
+       $(".box > .left").click(function () {
+           clearInterval(img_move);
+            count--;
+            if(count === -1){
+              count = $ls_img.length -1 ;
+          }
+           action($ls_img,$ls_ol,$dot_li,count)
+
+       });
+
+       //自动播放函数
+       function move(){
+            count++;
+            if(count === $ls_img.length){
+              count = 0;
+          }
+           action($ls_img,$ls_ol,$dot_li,count)
+
+
+       }
+       //自执行函数
+        (function(){
+            var img_move = setInterval(move,2500);
+            window.img_move = img_move;
+        })(window);
+        //鼠标放到图片上显示效果
+        $pic.mouseenter(function(){
+            clearInterval(img_move)
+        });
+        $pic.mouseleave(function(){
+            img_move = setInterval(move,2500);
+        });
+
+        // 鼠标放到箭头上停止,移走移动(因为移动事件需要先停自执行动画，所以加上这个)
+        $slide.mouseenter(function(){
+            clearInterval(img_move)
+        });
+        $slide.mouseleave(function(){
+            img_move = setInterval(move,2500);
+        });
+
+
+        //鼠标放上菜单移动
+        $dot_li.mouseenter(function(){
+            clearInterval(img_move);    //停止动画
+            var num = $(this).index();  //获取目前鼠标放到哪个块的索引
+            count = num;                //给count
+            $(this).addClass("org").siblings().removeClass("org");
+            $ls_ol.eq(num).addClass("org").siblings().removeClass("org");
+            $ls_img.eq(num).fadeIn(500).siblings().fadeOut(500);
+        });
+
+        $dot_li.mouseleave(function(){
+            img_move = setInterval(move,2500);
+        })
+
+    })
+</script>
+</body>
+</html>

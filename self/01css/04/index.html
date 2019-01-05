@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    /*账号输入框开始*/
+
+    .user{
+        position: relative;
+        margin-left: 30px;
+    }
+    .user input{
+        padding-right: 25px;
+        width: 150px;
+        height: 20px;
+        border-radius:4px;
+        border: 1px solid #959595;
+        outline: none;
+    }
+    .user img{
+        position: absolute;
+        width: 23px;
+        left: 190px;
+        top: 1px;
+    }
+    /*账号输入框结束*/
+
+    /*购买输入框开始*/
+    .sum{
+         height: 22px;
+         width: 150px;
+        margin: 30px 30px;
+        position: relative;
+    }
+    .add{
+        height: 22px;
+        width: 22px;
+        line-height: 22px;
+        text-align: center;
+        border: 1px solid #dddddd;
+        position: absolute;
+        cursor: pointer;
+    }
+    .inp input{
+            position: absolute;
+            border: 0;
+            padding: 0;
+            width: 80px;
+            height: 22px;
+            outline: none;
+            border-top: 1px solid #dddddd;
+            border-bottom: 1px solid #dddddd;
+            left: 24px;
+    }
+    .miuns{
+            height: 22px;
+            width: 22px;
+            line-height: 22px;
+            text-align: center;
+            border: 1px solid #dddddd;
+            position: absolute;
+            left: 100px;
+            cursor: pointer;
+    }
+    /*购买输入框结束*/
+    .typeinp{
+        margin: 30px 30px;
+    }
+
+</style>
+
+<body>
+<!--注册input开始-->
+<div class="user">
+    <!--账号输入框-->
+    <lable for="user">账号</lable>
+    <input type="text" placeholder="请输入账号">
+    <img src="user.png" alt="">
+</div>
+<!--注册input结束-->
+
+<!--购买加减-->
+<div class="sum">
+    <div class="add ">-</div>
+    <div class="inp ">
+        <input type="text" value="1">
+    </div>
+    <div class="miuns ">+</div>
+</div>
+<!--购买加减-->
+
+<!--输入框禁止-->
+<div class="typeinp">
+<input type="text" name="www.xxx" readonly="readonly"  placeholder="只读不能修改"/><br>
+
+<input type="text" name="www.xxx.com" disabled="disabled" placeholder="全面禁止"/><br>
+
+<input type="text" autocomplete="off" id="number" placeholder="每次加载删除历史记录"/>
+</div>
+<!--输入框禁止结束-->
+</body>
+</html>

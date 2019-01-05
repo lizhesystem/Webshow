@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 1050px;
+            height: 700px;
+            border: 1px solid #444444;
+            margin: 10px auto;
+            border-radius:10px;
+        }
+        .box .tv{
+            width: 1000px;
+            border: 1px solid #444444;
+            height: 600px;
+            margin: 10px auto 0;
+            border-radius:10px;
+            position: relative;
+        }
+        .box .val{
+            width: 320px;
+            height: 50px;
+            margin: 20px auto 0;
+            /*overflow: hidden;*/
+        }
+        .box #text{
+            height: 30px;
+            outline: none;
+            font-size: 20px;
+            vertical-align: top;
+
+                    }
+        .box #but{
+            height: 33px;
+            /*border: none;*/
+            width: 60px;
+            background-color: dodgerblue;
+            cursor: pointer;
+            border: 1px solid #c0c0c0;
+            outline: none;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="box">
+    <div class="tv"></div>
+    <div class="val">
+        <input type="text" id="text">
+        <input type="button" value="发送" id="but">
+    </div>
+</div>
+<script src="../../../js/jquery-3.3.1.js"></script>
+<script>
+    $(function(){
+        //获取窗口高和宽。
+        var $tv = $(".tv");
+        var $tv_width = $tv.width();
+        var $tv_height = $tv.height();
+        //获取颜色窗口
+        var getColor = function(){
+            return '#'+('00000'+(Math.random()*0xffffff <<0).toString(16)).substr(-6);
+        };
+        //获取随机高度
+        var getTop = function(){
+            return Math.floor(Math.random()*$tv_height +1);
+        };
+
+        $("#but").click(function(){
+            //弹幕内容
+            var $span = $("<span></span>").text($("#text").val());
+            //弹幕内容必须先append到tv元素里，要不然无法获取宽度的.!!!
+            $tv.append($span);
+            //给弹幕样式和动画,执行完自己删除
+            $span.css({
+                top:getTop()-$span.height(),
+                left:$tv_width-$span.width(),
+                color:getColor(),
+                position:"absolute",
+                dispaly:"block"
+            }).animate({left:0},10000,"linear",function(){
+                $(this).remove()
+            });
+            //清空输入框
+            $("#text").val("");
+        })
+
+    })
+
+
+</script>
+</body>
+</html>

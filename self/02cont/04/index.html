@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        .box li{
+            list-style: none;
+            text-align: center;
+            line-height: 40px;
+        }
+        .box span{
+            border: 1px solid #cccccc;
+            font-size: 15px;
+            display: block;
+            cursor: pointer;
+            background-color: royalblue;
+        }
+        .box div{
+            height: 100px;
+            border: 1px solid #cccccc;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>
+            <span>菜单1</span>
+            <div>内容1</div>
+        </li>
+        <li>
+            <span>菜单2</span>
+            <div>内容2</div>
+        </li>
+        <li>
+            <span>菜单3</span>
+            <div>内容3</div>
+        </li>
+        <li>
+            <span>菜单4</span>
+            <div>内容4</div>
+        </li>
+        <li>
+            <span>菜单5</span>
+            <div>内容5</div>
+        </li>
+    </ul>
+    
+</div>
+<script src="../../../js/jquery-3.3.1.js"></script>
+<script>
+$(function(){
+    $(".box span").on("click",function(){
+            //获取span标签
+            var $dv = $(this).next();
+            //判断如果当前span的下个标签是否关闭,如果是,展示并且其他span下的标签关闭
+            //如果span的下个标签打开,关闭。
+    $dv.is(":hidden")?$dv.slideDown(500).parent().siblings().children("div").slideUp(500):$dv.slideUp(500);
+
+    });
+
+
+
+})
+</script>
+</body>
+</html>

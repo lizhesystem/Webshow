@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ele:hover{
+            border: 2px solid red;
+        }
+        .ele{
+            background-color: sandybrown;
+        }
+        .ele:hover .ele-item{
+            color: red;
+        }
+
+    /*清除浮动开始*/
+     .ccc{
+         border: 1px solid red;
+         /*width: 20px;*/
+         /*height: 30px;*/
+         margin-top: 20px;
+     }
+     .one{
+         width: 200px;
+         height: 30px;
+         background-color: orange;
+         float: left;
+     }
+     .two{
+         width: 300px;
+         height: 20px;
+         background-color: coral;
+         float: left;
+     }
+        .bbb{
+            border: 1px solid red;
+            /*width: 20px;*/
+            /*height: 30px;*/
+        }
+        .left{
+            width: 200px;
+            height: 30px;
+            background-color: orange;
+            float: left;
+        }
+        .left1{
+            width: 300px;
+            height: 20px;
+            background-color: coral;
+            float: left;
+        }
+        .clear:after{
+            content: "";
+            clear: both;
+            display: block;
+            height: 0;
+            overflow: hidden;
+        }
+        .text::first-letter{
+            font-size: 20px;
+            color: red;
+            font-weight: bold;
+        }
+        /*清除浮动结束*/
+        /*内边框开始*/
+        .box{
+            float: left;
+            margin-top: 30px;
+            width: 300px;
+            height: 200px;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: red;
+        }
+        .box:hover::after{
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 10px solid rgba(255,255,255,0.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+            box-sizing: border-box;
+            /*text-align: center;*/
+        }
+        .box p{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+        /*内边框结束*/
+        .block{
+            float: left;
+            margin-top: 30px;
+            margin-left: 40px;
+        }
+        .block div{
+            width: 100px;
+            height: 200px;
+            border: 1px #cccccc solid;
+            float: left;
+            margin-right: -1px;
+            position: relative;
+                    }
+        .block div:hover{
+            border: 1px orange solid;
+            z-index: 1;
+            /*position: relative;*/
+            /*还有种方案直接在div上加position: relative，脱离标准流但是还是占位置*/
+        }
+    </style>
+</head>
+<body>
+<!--伪类开始-->
+<div class="ele">
+    <div>123</div>
+    <div class="ele-item">456</div>
+    <h4>鼠标放上展示效果</h4>
+</div>
+<!--伪类结束-->
+<!--清除浮动开始-->
+<div class="ccc">
+    <div class="one">A</div>
+    <div class="two">B</div>
+</div>
+<br>
+<br>
+<div class="text">清除浮动前：A,B统一左浮动,由于父级元素没有清除浮动,无法撑起级元,这个时候需要给父级元素清除浮动</div>
+<br>
+
+<div class="bbb clear">
+    <div class="left">A</div>
+    <div class="left1">B</div>
+</div>
+<br>
+<div class="text">清除浮动后：专门写一个伪类清除浮动(推荐),谁用谁加上这个class,或者在父级标签上加overflow: auto;但是不支持iE6和IE7</div>
+<!--清除浮动结束-->
+<!--内边框开始-->
+<div class="box">
+    <p>点击边框生成after的内边框。</p>
+</div>
+<!--内边框结束-->
+<!--横排相册-->
+<div class="block">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<!--横排相册-->
+
+</body>
+</html>

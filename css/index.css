@@ -1,0 +1,164 @@
+﻿
+    *{
+        margin: 0;
+        padding: 0;
+    }
+       @font-face {  /*声明字体  引用字体*/
+	  font-family: "icomoon";  /*我们自己起名字可以*/
+	  src:  url('../fonts/icomoon.eot?7kkyc2');
+	  src:  url('../fonts/icomoon.eot?7kkyc2#iefix') format('embedded-opentype'),
+	    url('../fonts/icomoon.ttf?7kkyc2') format('truetype'),
+	    url('../fonts/icomoon.woff?7kkyc2') format('woff'),
+	    url('../fonts/icomoon.svg?7kkyc2#icomoon') format('svg');
+	  font-style: normal;  /*倾斜字体正常*/
+     }
+    body,html{
+        height: 100%;
+    }
+
+    .select{
+        display: flex;
+        height: 100%;
+        position: relative;
+    }
+    a,li,i{
+        text-decoration: none;
+        list-style: none;
+        }
+    /*左边图标开始*/
+    .leftnav{
+        min-width: 60px;
+        height: 100%;
+        background-color: #f7f7f7;
+        position: relative;
+        /*flex: 1;*/
+    }
+    .leftnav ul{
+        padding-top: 80px;
+    }
+    .leftnav li{
+        height: 35px;
+        width: 100%;
+        list-style: none;
+        line-height: 35px;
+    }
+    .leftnav i{
+        font-family: icomoon;
+        font-style: normal;
+        color: #959595;
+        font-size: 18px;
+        margin: 10px 25px 10px;
+    }
+    .leftnav i:hover{
+        color: red;
+    }
+    .leftnav #img{
+        width: 80px;
+        position: absolute;
+        z-index: 999;
+        left: 65px;
+        transition: all 1s;
+        transform: rotate(0)
+
+    }
+    .leftnav #img:hover{
+        transform: rotate(20deg);
+    }
+
+
+    /*左边图标结束*/
+    /*中间标题开始*/
+    .innernav{
+        min-width: 150px;
+        height: 100%;
+        background-color: #f7f7f7;
+        /*flex: 1;*/
+        position: relative;
+    }
+    .innernav .list{
+        padding-top: 80px;
+
+    }
+    .innernav li{
+        height: 35px;
+        line-height: 35px;
+    }
+    .innernav span {
+        /*border-bottom: 1px solid #959595;*/
+        color: #444444;
+        font-size: 14px;
+    }
+    .innernav dl{
+        display: none;
+        position: absolute;
+        font-size: 14px;
+        left: 171px;
+        top: 20px;
+        width: 180px;
+    }
+    .innernav a{
+        display: block;
+        font-size: 14px;
+        color: #f7f7f7;
+        /*font-weight: 600;*/
+    }
+    .innernav i{
+        font-size: 12px;
+        padding-right: 10px;
+        font-family: icomoon;
+    }
+    .innernav h4{
+        transition: all 0.5s;
+    }
+    .border{
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        background-color: rgba(0,0,0,0);
+        padding-left: 10px;
+    }
+    /*中间标题结束*/
+
+    /*最右边背景*/
+    .rightnav{
+        height: 100%;
+        min-width: 200px;
+        /*flex: 1;*/
+        background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
+        box-shadow: 0 0 2px 2px rgba(0,0,0,0.2);
+        overflow: auto;
+    }
+    .list dd{
+        position: relative;
+        height: 28px;
+        line-height: 28px;
+    }
+    .list dd:after{
+        content: "";
+        display: block;
+        height: 1px;
+        width: 0;
+        background-color: #f7f7f7;
+        position: absolute;
+        bottom: 1px;
+        left: 30%;
+        transition: all 0.35s ease-in-out;
+    }
+    .list dd:hover:after{
+        left: 0;
+        width: 95%;
+        /*transform: scaleX(90);*/
+    }
+
+    /*最右边背景结束*/
+    /*展示iframe*/
+    .ifm{
+        flex: 1;
+        text-align: center;
+    }
+    .ifm iframe{
+        width: 1200px;
+        height: 750px;
+        border: 1px solid silver;
+        margin-top: 30px;
+        border-radius: 10px;
+    }

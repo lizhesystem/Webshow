@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wjx{
+            height: 30px;
+            margin: 30px 30px 0;
+        }
+        .wjx li{
+            font-size: 30px;
+            float: left;
+            color: #f1c943;
+            list-style: none;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wjx">
+    <ul>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+</div>
+<script src="../../../js/jquery-3.3.1.js"></script>
+<script>
+    $(function(){
+        var kong = "☆";
+        var shi = "★";
+        $(".wjx li").on("mouseenter",function(){
+            $(this).text(shi).prevAll().text(shi);  //这里不能用链式编程,如果还用链式去找的是最前面的li,而不是this的后面的li
+            $(this).text(shi).nextAll().text(kong);
+        });
+
+        $(".wjx").on("mouseleave",function(){
+            $(".wjx li").text(kong);
+            //换个思路只要点击了给他加个属性或者空的类,那么移开鼠标的时候根据编辑值，保存状态
+            $("li.current").text(shi).prevAll().text(shi);
+        });
+
+        $(".wjx li").on("click",function(){
+            //点击的时候留下一个标记
+            $(this).addClass("current").siblings().removeClass("current");
+        })
+
+
+
+
+
+
+    })
+
+
+</script>
+</body>
+</html>

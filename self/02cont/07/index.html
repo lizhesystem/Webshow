@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 400px;
+            margin: 100px auto 0;
+        }
+        table{
+            border: 1px solid #c0c0c0;
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 400px;
+        }
+        th,td{
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+        th{
+            background-color: #09c;
+        }
+        tr{
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+        <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="th_all"></th>
+                <th>三年一班</th>
+                <th>三年二班</th>
+                <th>班长</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>王大锤</td>
+                <td>张晓丹</td>
+                <td>刘明</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>小岳岳</td>
+                <td>DAC</td>
+                <td>江疏影</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>李白</td>
+                <td>海鑫</td>
+                <td>韩信</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="../../../js/jquery-3.3.1.js"></script>
+<script>
+  $(function(){
+    $("#th_all").click(function(){
+      // console.log($(this).prop('checked'));
+      $(".box input").prop("checked",$(this).prop("checked"))
+    });
+
+    $(".box input").click(function(){
+        if($("tbody input:checked").length === $("tbody input").length){
+           $("#th_all").prop("checked",true);
+        }else{
+           $("#th_all").prop("checked",false);
+        }
+    })
+
+  })
+</script>
+</body>
+</html>

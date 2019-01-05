@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            height: 50px;
+            margin: 100px auto;
+            width: 720px;
+        }
+        .nav li{
+            list-style: none;
+            height: 50px;
+            float: left;
+            width: 100px;
+            background-color: pink;
+            line-height: 50px;
+            border: 1px solid #949494;
+            text-align: center;
+            cursor: pointer;
+            color: black;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .nav li a{
+            text-decoration: none;
+            display: inline-block;
+        }
+        .nav li span{
+            position: absolute;
+            background-color: rgba(255,255,255,0.6);
+            width: 100px;
+            height: 50px;
+            display: block;
+            top: 52px;
+            left: 0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <ul>
+        <li><a href="#">哆<span></span></a></li>
+        <li><a href="#">来<span></span></a></li>
+        <li><a href="#">咪<span></span></a></li>
+        <li><a href="#">发<span></span></a></li>
+        <li><a href="#">索<span></span></a></li>
+        <li><a href="#">啦<span></span></a></li>
+        <li><a href="#">西<span></span></a></li>
+    </ul>
+    <div>
+        <audio src="mp3/1.ogg"></audio>
+        <audio src="mp3/2.ogg"></audio>
+        <audio src="mp3/3.ogg"></audio>
+        <audio src="mp3/4.ogg"></audio>
+        <audio src="mp3/5.ogg"></audio>
+        <audio src="mp3/6.ogg"></audio>
+        <audio src="mp3/7.ogg"></audio>
+    </div>
+</div>
+<script src="../../../js/jquery-3.3.1.js"></script>
+<script>
+    $(function(){
+
+        //鼠标放上显示遮罩,播放声音事件
+        $(".nav li").mouseenter(function(){
+            $(this).find("span").stop().animate({top:0});
+            var $idx = $(this).index();
+            //获取当前A标签的索引值
+            //播放audio标签目前索引的音乐文件,jquery不封装播放,play方法是dom的
+            $("audio").get($idx).load();  //直接加载
+            $("audio").get($idx).play()
+        }).mouseleave(function(){
+            $(this).find("span").stop().animate({top:52})
+        });
+
+        //按下键产生声音+遮罩事件
+        var flag = true;  //节流阀的作用：防止事件一直触发，保证当前函数只触发一次
+        $(document).on("keydown",function(e){
+            if(flag){
+                flag = false;
+                var code = e.keyCode;
+                if(code >=49 && code <=55){
+                    $(".nav li").eq(code - 49).mouseenter()
+                    // $(".nav li").eq(code - 49).trigger("mouseenter")   也可以用trigger来执行事件
+                }
+            }
+        });
+        //松开键
+        $(document).on("keyup",function(e){
+            flag = true;
+            var code = e.keyCode;
+            if(code >=49 && code <=55){
+                $(".nav li").eq(code - 49).mouseleave()
+            }
+        })
+
+    })
+
+
+</script>
+</body>
+</html>
