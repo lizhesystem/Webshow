@@ -29,7 +29,8 @@
     ],
     [
         {title:"四、Dom内容操作"},
-        {url:"self/04dcont/01/index.html",title:"1、正则验证登录"}
+        {url:"self/04dcont/01/index.html",title:"1、正则验证登录"},
+		{url:"self/04dcont/02/index.html",title:"2、原生JS贪吃蛇"}
     ],
     [
         {title:"五、Dom图片操作"},
